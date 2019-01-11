@@ -1,0 +1,31 @@
+<div class="row clearfix">
+ <% if task.completed? %>
+  <div class="complete">
+   <%= link_to complete_list_task_path(@list, task.id), method: :patch do %>
+    <i style="opacity: 0.4;" class="fa fa-check"></i>
+   <% end %>
+  </div>
+  <div class="task">
+   <p style="opacity: 0.4;"><strike><%= task.content %></strike></p>
+  </div>
+  <div class="trash">
+   <%= link_to list_task_path(@list, task.id), method: :delete, data: { confirm: "Are you sure?" } do %>
+    <i class="fa fa-trash"></i>
+   <% end %>
+  </div>
+ <% else %>
+  <div class="complete">
+   <%= link_to complete_list_task_path(@list, task.id), method: :patch do %>
+    <i class="fa fa-circle-thin"></i>
+   <% end %>
+  </div>
+  <div class="task">
+   <p><%= task.content %></p>
+  </div>
+  <div class="trash">
+   <%= link_to list_task_path(@list, task.id), method: :delete, data: { confirm: "Are you sure?" } do %>
+    <i class="fa fa-trash"></i>
+   <% end %>
+  </div>
+ <% end %>
+</div>
